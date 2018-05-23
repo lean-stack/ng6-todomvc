@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { State } from '../model/state';
 
 @Component({
   selector: 'todo-main',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  @Input()
+  public state: State;
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  setAllStates() {
+    if (this.state.hasActiveItems) {
+      this.state.todos.forEach( t => {t.completed = true; });
+    } else {
+      this.state.todos.forEach( t => {t.completed = false; });
+    }
+  }
 }

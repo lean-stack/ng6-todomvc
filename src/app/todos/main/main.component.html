@@ -1,6 +1,5 @@
-<!-- This section should be hidden by default and shown when there are todos -->
-<section class="main">
-  <input id="toggle-all" class="toggle-all" type="checkbox">
+<section *ngIf="state.todos.length > 0" class="main">
+  <input id="toggle-all" class="toggle-all" type="checkbox" (change)="setAllStates()" [checked]="!state.hasActiveItems">
   <label for="toggle-all">Mark all as complete</label>
-  <todo-list></todo-list>
+  <todo-list [todos]="state.todos"></todo-list>
 </section>

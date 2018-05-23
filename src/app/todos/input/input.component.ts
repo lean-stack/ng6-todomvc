@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'todo-input',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InputComponent implements OnInit {
 
+  public title = '';
+
+  @Output()
+  public create = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  createTodo() {
+    this.create.emit(this.title);
+    this.title = '';
+  }
 }

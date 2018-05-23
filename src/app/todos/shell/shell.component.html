@@ -1,5 +1,5 @@
 <section class="todoapp">
-  <todo-input></todo-input>
-  <todo-main></todo-main>
-  <todo-actionbar></todo-actionbar>
+  <todo-input (create)="createTodo($event)"></todo-input>
+  <todo-main [state]="state"></todo-main>
+  <todo-actionbar [state]="state"></todo-actionbar>
 </section>

@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, EventEmitter, Output } from '@angular/core';
+import { Todo } from '../model/todo';
 
 @Component({
   selector: 'todo-item',
@@ -8,9 +9,44 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ItemComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  public todo: Todo;
+
+  @Output()
+  public deleteMe = new EventEmitter<Todo>();
+
+  public editMode = false;
+  public editText: string;
+
+  constructor() {}
 
   ngOnInit() {
+    this.editText = this.todo.title;
   }
 
+  remove() {
+    this.deleteMe.emit(this.todo);
+  }
+
+  toggle() {
+    console.log('Todo state toggled');
+  }
+
+  beginEdit() {
+    this.editMode = true;
+  }
+
+  cancelEdit() {
+    this.editMode = false;
+    this.editText = this.todo.title;
+  }
+
+  commitEdit() {
+    // Teste, ob der Edit-Mode schon verlassen wurde
+    if (this.editMode) {
+      this.editMode = false;
+      this.todo.title = this.editText;
+      console.log('Todo title edited.');
+    }
+  }
 }
