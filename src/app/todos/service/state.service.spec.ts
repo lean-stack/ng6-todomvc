@@ -1,11 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { StateService } from './state.service';
+import { StoreService } from './store.service';
 
 describe('StateService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [StateService]
+      providers: [
+        StateService,
+        { provide: StoreService, useValue: { getAll: () => new Promise( () => {} ) } }
+      ]
     });
   });
 
