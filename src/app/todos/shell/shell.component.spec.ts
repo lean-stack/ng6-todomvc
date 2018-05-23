@@ -12,7 +12,7 @@ describe('ShellComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ShellComponent ],
-      providers: [ { provide: StoreService, useClass: LocalStoreService } ]
+      providers: [ { provide: StoreService, useClass: LocalStoreService } ],
       schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();

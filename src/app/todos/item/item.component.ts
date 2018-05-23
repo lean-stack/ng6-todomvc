@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Input, EventEmitter, Output } from '@angular/core';
 import { Todo } from '../model/todo';
+import { CommandService } from '../service/command.service';
 
 @Component({
   selector: 'todo-item',
@@ -18,7 +19,7 @@ export class ItemComponent implements OnInit {
   public editMode = false;
   public editText: string;
 
-  constructor() {}
+  constructor(private cmdService: CommandService) {}
 
   ngOnInit() {
     this.editText = this.todo.title;
@@ -29,7 +30,7 @@ export class ItemComponent implements OnInit {
   }
 
   toggle() {
-    console.log('Todo state toggled');
+    this.cmdService.update(this.todo);
   }
 
   beginEdit() {
@@ -46,7 +47,7 @@ export class ItemComponent implements OnInit {
     if (this.editMode) {
       this.editMode = false;
       this.todo.title = this.editText;
-      console.log('Todo title edited.');
+      this.cmdService.update(this.todo);
     }
   }
 }
