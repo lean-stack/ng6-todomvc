@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { StateService } from './state.service';
-import { StoreService } from './store.service';
+import { StoreService } from './store.service.interface';
 
 describe('StateService', () => {
   beforeEach(() => {

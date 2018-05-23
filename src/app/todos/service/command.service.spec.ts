@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { CommandService } from './command.service';
-import { StoreService } from './store.service';
+import { StoreService } from './store.service.interface';
 
 describe('CommandService', () => {
   beforeEach(() => {
