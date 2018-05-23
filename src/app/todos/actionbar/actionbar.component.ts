@@ -8,7 +8,6 @@ import { State } from '../model/state';
 })
 export class ActionbarComponent implements OnInit {
 
-
   @Input()
   public state: State;
 
