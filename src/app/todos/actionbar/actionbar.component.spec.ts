@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActionbarComponent } from './actionbar.component';
 import { State } from '../model/state';
+import { StoreService } from '../service/store.service.interface';
+import { LocalStoreService } from '../service/local-store.service';
 
 describe('ActionbarComponent', () => {
   let component: ActionbarComponent;
@@ -9,7 +11,8 @@ describe('ActionbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ActionbarComponent ]
+      declarations: [ ActionbarComponent ],
+      providers: [ { provide: StoreService, useClass: LocalStoreService } ],
     })
     .compileComponents();
   }));

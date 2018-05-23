@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { State } from '../model/state';
+import { CommandService } from '../service/command.service';
 
 @Component({
   selector: 'todo-actionbar',
@@ -11,12 +12,12 @@ export class ActionbarComponent implements OnInit {
   @Input()
   public state: State;
 
-  constructor() { }
+  constructor(private cmdService: CommandService) { }
 
   ngOnInit() {
   }
 
   clearCompleted() {
-    this.state.todos = this.state.todos.filter( t => !t.completed);
+    this.cmdService.removeCompleted();
   }
 }

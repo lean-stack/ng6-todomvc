@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../model/todo';
+import { CommandService } from '../service/command.service';
 
 @Component({
   selector: 'todo-list',
@@ -11,16 +12,13 @@ export class ListComponent implements OnInit {
   @Input()
   public todos: Todo[];
 
-  constructor() { }
+  constructor(private cmdService: CommandService) { }
 
   ngOnInit() {
 
   }
 
   removeTodo(todo: Todo) {
-    const ix = this.todos.findIndex( (t) => t.id === todo.id );
-    this.todos.splice(ix, 1);
-
-    // this.todos = this.todos.filter( (t) => t.id !== todo.id);
+    this.cmdService.remove(todo.id);
   }
 }
