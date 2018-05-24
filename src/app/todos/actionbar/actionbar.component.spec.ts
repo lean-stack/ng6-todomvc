@@ -4,6 +4,7 @@ import { ActionbarComponent } from './actionbar.component';
 import { State } from '../model/state';
 import { StoreService } from '../service/store.service.interface';
 import { LocalStoreService } from '../service/local-store.service';
+import { CommandService } from '../service/command.service';
 
 describe('ActionbarComponent', () => {
   let component: ActionbarComponent;
@@ -12,7 +13,7 @@ describe('ActionbarComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ActionbarComponent ],
-      providers: [ { provide: StoreService, useClass: LocalStoreService } ],
+      providers: [ { provide: CommandService, useValue: {} }],
     })
     .compileComponents();
   }));

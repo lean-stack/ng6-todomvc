@@ -47,8 +47,12 @@ export class ItemComponent implements OnInit {
     // Teste, ob der Edit-Mode schon verlassen wurde
     if (this.editMode) {
       this.editMode = false;
-      this.todo.title = this.editText;
-      this.cmdService.update(this.todo);
+      if ( this.editText.trim().length === 0) {
+        this.cmdService.remove(this.todo.id);
+      } else {
+        this.todo.title = this.editText;
+        this.cmdService.update(this.todo);
+      }
     }
   }
 }
