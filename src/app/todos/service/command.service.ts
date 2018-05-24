@@ -36,8 +36,10 @@ export class CommandService {
 
   async removeCompleted() {
     // Push Strategie: neuer State
-    const deletedTodos = await this.store.removeCompleted();
-    deletedTodos.forEach( (todo) => {
+    const completedTodos =
+      this.stateSrv.state.todos.filter( t => t.completed );
+    completedTodos.forEach( async (todo) => {
+      await this.store.remove(todo.id);
       const ix = this.stateSrv.state.todos.findIndex( t => t.id === todo.id);
       this.stateSrv.state.todos.splice(ix, 1);
     });

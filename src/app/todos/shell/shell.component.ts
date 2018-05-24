@@ -12,7 +12,7 @@ export class ShellComponent implements OnInit {
 
   public state: State;
 
-  constructor(private stateService: StateService, private cmdService: CommandService) { }
+  constructor(public stateService: StateService, private cmdService: CommandService) { }
 
   private lastId = 0;
 

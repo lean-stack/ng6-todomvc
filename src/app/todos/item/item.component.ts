@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import { Todo } from '../model/todo';
 import { CommandService } from '../service/command.service';
 
@@ -30,6 +30,7 @@ export class ItemComponent implements OnInit {
   }
 
   toggle() {
+    this.todo.completed = !this.todo.completed;
     this.cmdService.update(this.todo);
   }
 

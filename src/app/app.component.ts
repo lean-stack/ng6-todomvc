@@ -1,4 +1,5 @@
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { StateService } from './todos/service/state.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,7 @@ import { Component, OnChanges, SimpleChanges } from '@angular/core';
 })
 export class AppComponent implements OnChanges {
 
+  constructor(private stateSrv: StateService) {}
 
   name = 'Micha Alt';
   url = 'https://lean-stack.de';

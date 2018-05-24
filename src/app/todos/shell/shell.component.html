@@ -1,5 +1,6 @@
-<section class="todoapp">
+<section class="todoapp"  *ngIf="!stateService.storeOffline">
   <todo-input (create)="createTodo($event)"></todo-input>
   <todo-main [state]="state"></todo-main>
   <todo-actionbar [state]="state"></todo-actionbar>
 </section>
+<h1 *ngIf="stateService.storeOffline">Problem mit dem Backend</h1>

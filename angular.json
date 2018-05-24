@@ -44,17 +44,29 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "staging": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.staging.ts"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-todomvc:build"
+            "browserTarget": "ngx-todomvc:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {
               "browserTarget": "ngx-todomvc:build:production"
+            },
+            "staging": {
+              "browserTarget": "ngx-todomvc:build:staging"
             }
           }
         },

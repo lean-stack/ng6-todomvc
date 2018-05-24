@@ -1,7 +1,7 @@
 <todo-shell></todo-shell>
 <footer class="info">
-  <p>Double-click to edit a todo</p>
+  <p [class.fett]="true" [style.fontWeight]="'bold'">Double-click to edit a todo</p>
   <!-- Change this out with your name and url ↓ -->
-  <p>Created by <a href="{{ url }}">{{ name }}</a></p>
-  <p>Part of <a [href]="projectUrl">TodoMVC</a></p>
+  <p [ngStyle]="{ 'font-weight': 'bold' }">Created by <a href="{{ url }}">{{ name }}</a></p>
+  <p [attr.egal]="'unwichtig'">Part of <a [href]="projectUrl">TodoMVC</a></p>
 </footer>
